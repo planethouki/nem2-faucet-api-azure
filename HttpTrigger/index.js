@@ -17,7 +17,6 @@ module.exports = async function (context, req) {
     const privateKey = process.env.PRIVATE_KEY;
     const networkType = NetworkType[process.env.NETWORK_TYPE];
     const endpoint = process.env.ENDPOINT;
-    const generationHash = process.env.GENERATION_HASH;
     const mosaicId = new MosaicId(process.env.MOSAIC_ID);
     const amount = UInt64.fromUint(process.env.AMOUNT);
     const fee = UInt64.fromUint(process.env.FEE);
@@ -35,7 +34,7 @@ module.exports = async function (context, req) {
             networkType,
             fee
         );
-        const signedTx = account.sign(tx, generationHash);
+        const signedTx = account.sign(tx);
         await transactionHttp.announce(signedTx).toPromise().then(() => {
             context.res = {
                 // status: 200, /* Defaults to 200 */
