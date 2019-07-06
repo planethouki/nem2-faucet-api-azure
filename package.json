@@ -6,7 +6,8 @@
     "test": "echo \"No tests yet...\""
   },
   "dependencies": {
-    "nem2-sdk": "^0.10.1"
+    "nem2-sdk": "^0.10.1",
+    "nem2-library": "0.9.5"
   },
   "devDependencies": {}
 }
